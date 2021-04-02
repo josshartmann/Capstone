@@ -1,15 +1,21 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.db import IntegrityError
 
 from .models import User
 
-def index(request):
-    return HttpResponse("index")
 
+def index(request):
+    return render(request, "capstone/index.html")
+
+
+@login_required(login_url='login')
 def home(request):
-    return HttpResponse("in-homepage")
+    return render(request, "capstone/home.html")
+
 
 def register(request):
     if request.method == "POST":
@@ -39,5 +45,26 @@ def register(request):
     else:
         return render(request, "capstone/register.html")
 
-def login(request):
-    return render(request, "capstone/login.html")
+
+def login_view(request):
+    if request.method == "POST":
+        # attempt to sign user id
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        # check if authentication successful
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse("home"))
+        else:
+            return render(request, "capstone/login.html", {
+                "message": "Invalid username and/or password."
+            })
+    else:
+        return render(request, "capstone/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("index"))
