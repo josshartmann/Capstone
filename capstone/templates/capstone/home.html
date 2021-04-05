@@ -1,16 +1,8 @@
-{% load static %}
+{% extends "capstone/layout.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'capstone/style.css' %}" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
+{% block body %}
+
     <h1>Welcome, {{ user }}</h1>
     <a href="{% url 'logout' %}">Logout</a>
-</body>
-</html>
+
+{% endblock %}
