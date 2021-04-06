@@ -2,8 +2,32 @@
 
 {% block body %}
 
-    <h3>index-page</h3>
-    <p><a href="{% url 'login' %}">login</a></p>
-    <p><a href="{% url 'register' %}">register</a></p>
+    <div class="container center">
+        <div class="row">
+            <div class="col-8 d-flex">
+                <div class="align-self-center">
+                    Air Quote Coach
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <form action="" class="form-container" method="post">
+                                <div class="form-group">
+                                <input type="text" class="form-control" required id="username" name="username" placeholder="Username" autocomplete="off">
+                                </div>
+                                <div class="form-group">
+                                <input type="password" class="form-control" required id="password" name="password" placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-light col-12 mt-2 border-dark">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>>
+
     
 {% endblock %}
