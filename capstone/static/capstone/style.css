@@ -8,21 +8,10 @@
 }
    
 html, body {
+	margin: 0;
 	height: 100%;
 	position: relative;
-}
-   
-.main-container {
-	min-height: 100vh; /* will cover the 100% of viewport */
 	overflow: hidden;
-	display: block;
-	position: relative;
-	padding-bottom: 100px; /* height of your footer */
-}
-
-.center {
-    display: table-cell;
-    vertical-align: middle;
 }
 
 footer {
