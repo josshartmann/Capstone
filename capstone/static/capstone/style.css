@@ -19,3 +19,11 @@ footer {
 	bottom: 0;
 	width: 100%;
 }
+
+.button-margin {
+	margin-right: 2px;
+}
+
+.button-margin:hover {
+	text-decoration: underline;
+}

@@ -1,6 +1,9 @@
 {% extends "capstone/layout.html" %}
 {% load static %}
 {% block body %}
+{% block script %}
+    <script src="{% static 'capstone/capstone.js' %}"></script>
+{% endblock %}
 
     <div class="container" style="height: 84vh;">
         <div class="row h-100">
@@ -12,12 +15,11 @@
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae ex blanditiis enim maiores illum, vitae quidem dolor iusto debitis doloribus saepe fugiat! Officia deleniti consequuntur aspernatur cumque atque ipsam amet.</p>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae ex blanditiis enim maiores illum, vitae quidem dolor iusto debitis doloribus saepe fugiat! Officia deleniti consequuntur aspernatur cumque atque ipsam amet.</p>
                     <div class="d-flex justify-content-center">
-                        <img cla src="{% static 'capstone/images/test.png' %}" width="300px";object-fit: cover;">
+                        <img cla src="{% static 'capstone/images/couple.png' %}" width="300px";object-fit: cover;">
                     </div>
-                    
                 </div>
             </div>
-            <div class="col-4 my-auto">
+            <div class="col-4 my-auto" id="login" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -35,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-4 my-auto">
+            <div class="col-4 my-auto" id="register" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -62,12 +64,12 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
-            <!-- <div class="col-4 my-auto">
+            </div>
+            <div class="col-4 my-auto" id="index" style="display: block;">
                 <div>
                     <img src="{% static 'capstone/images/workhard.png' %}" width="100%">
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 {% endblock %}
