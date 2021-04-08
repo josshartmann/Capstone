@@ -35,9 +35,11 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse d-flex align-items-end flex-column" id="nav-principal">
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Should I Eat?</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Workout Generator</a></li>
                             <li class="nav-item"><a href="{% url 'logout' %}" class="btn btn-outline-dark ml-3">Logout</a></li>
                         {% else %}
                             <li class="nav-item"><button class="btn button-margin" onclick="showRegister()">Register</button></li>
