@@ -26,7 +26,7 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         if password != confirmation:
-            return render(request, "capstone/register.html", {
+            return render(request, "capstone/index.html", {
                 "message": "Passwords must match."
             })
         
@@ -35,15 +35,14 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "capstone/register.html", {
+            return render(request, "capstone/index.html", {
                 "message": "Username already taken."
             })
 
-        return render(request, "capstone/register.html", {
-            "message": "ok-register"
-        })
+        login(request, user)
+        return HttpResponseRedirect(reverse('home'))
     else:
-        return render(request, "capstone/register.html")
+        return render(request, "capstone/index.html")
 
 
 def login_view(request):
@@ -58,7 +57,7 @@ def login_view(request):
             login(request, user)
             return HttpResponseRedirect(reverse("home"))
         else:
-            return render(request, "capstone/login.html", {
+            return render(request, "capstone/index.html", {
                 "message": "Invalid username and/or password."
             })
     else:

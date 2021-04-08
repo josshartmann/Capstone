@@ -4,7 +4,9 @@
 {% block script %}
     <script src="{% static 'capstone/capstone.js' %}"></script>
 {% endblock %}
-
+    {% if message %}
+    <div class="d-flex justify-content-center bg-danger" style="color: white;">{{ message }}</div>
+    {% endif %}
     <div class="container" style="height: 84vh;">
         <div class="row h-100">
             <div class="col-8 my-auto">
@@ -24,7 +26,9 @@
                     <div class="row">
                         <div class="col-12">
                             <h4>Login</h4>
-                            <form action="" class="form-container" method="post">
+                            
+                            <form action="{% url 'login' %}" class="form-container" method="post">
+                                {% csrf_token %}
                                 <div class="form-group">
                                 <input type="text" class="form-control" required id="username" name="username" placeholder="Username" autocomplete="off">
                                 </div>
@@ -42,9 +46,6 @@
                     <div class="row">
                         <div class="col-12">
                             <h4>Register</h4>
-                            {% if message %}
-                            <div>{{ message }}</div>
-                            {% endif %}
                             <form action="{% url 'register' %}" method="post">
                                 {% csrf_token %}
                                 <div class="form-group mt-4">
