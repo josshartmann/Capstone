@@ -67,3 +67,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
+
+def shouldIEat(request):
+    return render(request, "capstone/should-i-eat.html")

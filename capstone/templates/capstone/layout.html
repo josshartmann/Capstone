@@ -38,7 +38,7 @@
                         <ul class="navbar-nav">
                         {% if user.is_authenticated %}
                             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Should I Eat?</a></li>
+                            <li class="nav-item"><a href="{% url 'shouldIEat' %}" class="nav-link">Should I Eat?</a></li>
                             <li class="nav-item"><a href="" class="nav-link">Workout Generator</a></li>
                             <li class="nav-item"><a href="{% url 'logout' %}" class="btn btn-outline-dark ml-3">Logout</a></li>
                         {% else %}
