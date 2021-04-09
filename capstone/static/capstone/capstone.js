@@ -33,20 +33,3 @@ function showRegister(){
         login.style.display = "none";
     }
 }
-
-function results(){
-    var calculator = document.getElementById("calculator");
-    var calcResults = document.getElementById("calc-results");
-
-    var food = document.getElementById("food").value;
-    var calories = document.getElementById("calories").value;
-    var weight = document.getElementById("weight").value;
-
-    if (calculator.style.display === "none") {
-        calculator.style.display = "block";
-        calcResults.style.display = "none";
-    } else {
-        calculator.style.display = "none";
-        calcResults.style.display = "block";
-    }
-}

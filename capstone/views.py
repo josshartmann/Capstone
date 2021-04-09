@@ -9,7 +9,10 @@ from .models import User
 
 
 def index(request):
-    return render(request, "capstone/index.html")
+    if request.user.is_authenticated:
+        return render(request, "capstone/home.html")
+    else:
+        return render(request, "capstone/index.html")
 
 
 @login_required(login_url='login')
@@ -71,3 +74,34 @@ def logout_view(request):
 
 def shouldIEat(request):
     return render(request, "capstone/should-i-eat.html")
+
+
+def results(request):
+    if request.method == "POST":
+        food = request.POST["food"]
+        calories = request.POST["calories"]
+        weight = request.POST["weight"]
+
+        met = [13.5, 10, 8, 7, 4.8, 4,2]
+
+        resultHours = []
+        resultMinutes = []
+
+        for i in met:
+            duration = (int(calories) * 200) / (i * 3.5 * int(weight))
+            duration = round(duration)
+
+            hours = int(duration/60)
+            minutes = duration % 60
+
+            minutes = format(minutes, '02d')
+
+            resultHours.append(hours)
+            resultMinutes.append(minutes)
+        
+        return render(request, "capstone/results.html", {
+            "food": food,
+            "calories": calories,
+            "hours": resultHours,
+            "minutes": resultMinutes,
+        })

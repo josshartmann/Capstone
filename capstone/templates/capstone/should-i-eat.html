@@ -4,56 +4,27 @@
 {% block script %}
     <script src="{% static 'capstone/capstone.js' %}"></script>
 {% endblock %}
-<section id="calculator" style="display: block;">
-    <div class="container" style="height: 84vh">
-        <div class="row h-100 justify-content-center">
-            <div class="col-4 my-auto">
-                <form class="form-home">
-                    <div>
-                        <h4>Cheat Meal Calculator:</h4>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="food" required autocomplete="off" name="food" placeholder="What do you want to eat?">
-                        <input type="number" class="form-control mt-1" id="calories" required autocomplete="off" name="calories" placeholder="How many calories does it have in it?">
-                        <input type="number" class="form-control mt-1" id="weight" required autocomplete="off" name="weight" placeholder="What is your current weight in kg?">
-                    <div class="form-group">
-                        <button type="button" name="button" onclick="results()" id="calculate" class="btn btn-light col-12 mt-2 border-dark">Calculate!</button>
-                    </div>
-                </form>
+    <section id="calculator">
+        <div class="container" style="height: 84vh">
+            <div class="row h-100 justify-content-center">
+                <div class="col-4 my-auto">
+                    <form action="{% url 'results' %}" class="form-home" method="POST">
+                        {% csrf_token %}
+                        <div>
+                            <hr>
+                            <h4 style="text-align: center;">Cheat Meal Calculator</h4>
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="food" required autocomplete="off" name="food" placeholder="What do you want to eat?">
+                            <input type="number" class="form-control mt-1" id="calories" required autocomplete="off" name="calories" placeholder="How many calories does it have in it?">
+                            <input type="number" class="form-control mt-1" id="weight" required autocomplete="off" name="weight" placeholder="What is your current weight in kg?">
+                        <div class="form-group">
+                            <button type="submit" name="button" onclick="results()" id="calculate" class="btn btn-light col-12 mt-2 border-dark">Calculate!</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
-<section id="calc-results" style="display: none;">
-    <div class="container" style="height: 84vh">
-        <div class="row h-100 justify-content-center">
-            <div class="col-6 my-auto">
-              <h3>Food: <span name="food1"></span></h3>
-              <h3>Calories to burn: <span name="calories1"></span></h3>
-                <table class="table table-responsive" >
-                    <thead>
-                      <tr>
-                        <th>Activity</th>
-                        <th>Result(h)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td></td>
-                        <td style="text-align:center;"></td>
-                      </tr>
-                    </tbody>
-                </table>
-                <form action="#" class="mt-2" method="post">
-                    {% csrf_token %}
-                    <button type="submit" name="button" onclick="results()" id="eat" class="btn btn-light col-12 mt-2 border-dark">Eat it!</button>
-                </form>
-                <form action="#" class="mt-2" method="post">
-                    {% csrf_token %}
-                    <button type="submit" name="button" onclick="results()" id="not" class="btn btn-light col-12 mt-2 border-dark">Better not.</button>
-                </form>
-            </div>
-        </div>
-    </div>    
-</section>
+    </section>
 {% endblock %}

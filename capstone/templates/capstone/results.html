@@ -1,0 +1,65 @@
+{% extends 'capstone/layout.html' %}
+{% load static %}
+{% block body %}
+{% block script %}
+    <script src="{% static 'capstone/capstone.js' %}"></script>
+{% endblock %}
+    <section id="calc-results"">
+        <div class="container" style="height: 84vh">
+            <div class="row h-100 justify-content-center">
+                <div class="col-6 my-auto">
+                <hr>
+                <h3 style="text-align: center;"><span name="food1">{{ food }}</span></h3>
+                <h4 style="text-align: center;">Calories to burn: <span class="text-danger" name="calories1">{{ calories }}</span></h4>
+                <hr>
+                    <table class="table table-responsive" >
+                        <thead>
+                        <tr>
+                            <th>Activity</th>
+                            <th style="text-align:center;">Result(h)</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Running(8 mph)</td>
+                            <td style="text-align:center;" id="running">{{ hours.0 }}:{{ minutes.0 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bicycling(16 mph)</td>
+                            <td style="text-align:center;" id="bicycling16">{{ hours.1 }}:{{ minutes.1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Swimming(crawl, slow)</td>
+                            <td style="text-align:center;" id="swimming">{{ hours.2 }}:{{ minutes.2 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Aerobic Calisthenics</td>
+                            <td style="text-align:center;" id="calisthenics">{{ hours.3 }}:{{ minutes.3 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Dancing</td>
+                            <td style="text-align:center;" id="dancing">{{ hours.4 }}:{{ minutes.4 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bicycling(less than 10 mph)</td>
+                            <td style="text-align:center;" id="bicycling10">{{ hours.5 }}:{{ minutes.5 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Walking briskly</td>
+                            <td style="text-align:center;" id="walking">{{ hours.6 }}:{{ minutes.6 }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form action="#" class="mt-2" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="button" onclick="results()" id="eat" class="btn btn-light col-12 mt-2 border-dark">Eat it!</button>
+                    </form>
+                    <form action="{% url 'shouldIEat' %}" class="mt-2" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="button" onclick="results()" id="not" class="btn btn-light col-12 mt-2 border-dark">Better not.</button>
+                    </form>
+                </div>
+            </div>
+        </div>    
+    </section>
+{% endblock %}
