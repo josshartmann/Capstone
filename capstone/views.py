@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseRedirect
-from django.db import IntegrityError
+import requests
 
 from .models import User
 
@@ -104,4 +105,14 @@ def results(request):
             "calories": calories,
             "hours": resultHours,
             "minutes": resultMinutes,
+            "weight": weight,
         })
+
+
+def saveResults(request):
+    if request.method == "POST":
+        food = request.POST["food"]
+        print(food)
+        
+        
+        return HttpResponse('Ok')

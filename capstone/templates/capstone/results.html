@@ -9,7 +9,7 @@
             <div class="row h-100 justify-content-center">
                 <div class="col-6 my-auto">
                 <hr>
-                <h3 style="text-align: center;"><span name="food1">{{ food }}</span></h3>
+                <h3 style="text-align: center;"><span>{{ food }}</span></h3>
                 <h4 style="text-align: center;">Calories to burn: <span class="text-danger" name="calories1">{{ calories }}</span></h4>
                 <hr>
                     <table class="table table-responsive" >
@@ -50,13 +50,16 @@
                         </tr>
                         </tbody>
                     </table>
-                    <form action="#" class="mt-2" method="post">
+                    <form action="{% url 'saveResults' %}" class="mt-2" method="post">
                         {% csrf_token %}
-                        <button type="submit" name="button" onclick="results()" id="eat" class="btn btn-light col-12 mt-2 border-dark">Eat it!</button>
+                        <input type="hidden" name="food" value="{{ food }}">
+                        <input type="hidden" name="calories" value="{{ calories }}">
+                        <input type="hidden" name="weight" value="{{ weight }}">
+                        <button type="submit" name="button" id="eat" class="btn btn-light col-12 mt-2 border-dark">Eat it!</button>
                     </form>
                     <form action="{% url 'shouldIEat' %}" class="mt-2" method="post">
                         {% csrf_token %}
-                        <button type="submit" name="button" onclick="results()" id="not" class="btn btn-light col-12 mt-2 border-dark">Better not.</button>
+                        <button type="submit" name="button" id="not" class="btn btn-light col-12 mt-2 border-dark">Better not.</button>
                     </form>
                 </div>
             </div>
