@@ -6,19 +6,31 @@ from django.shortcuts import render
 from django.urls import reverse
 import requests
 
-from .models import User, ShouldIEat
+from .models import User, ShouldIEat, Profile
 
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "capstone/home.html")
+        user = request.user
+        
+        profile = Profile.objects.get(user=user)
+
+        return render(request, "capstone/home.html", {
+            "profile": profile,
+        })
     else:
         return render(request, "capstone/index.html")
 
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, "capstone/home.html")
+    user = request.user
+        
+    profile = Profile.objects.get(user=user)
+
+    return render(request, "capstone/home.html", {
+        "profile": profile,
+    })
 
 
 def register(request):
@@ -39,7 +51,7 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "capstone/index.html", {
+            return render(request, "capstone/home.html", {
                 "message": "Username already taken."
             })
 

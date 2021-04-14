@@ -5,18 +5,19 @@
         <div class="container" style="height: 70vh;">
             <div class="row">
                 <div class="col-4">
-                    <img src="{% static 'capstone/images/profi.jpeg' %}" style="max-height:400px; border: 2px solid black;">
+                    <img src="{{ profile.profile_photo }}" style="max-height:400px; max-width: 400px; border: 2px solid black;">
                 </div>
                 <div class="col-8" style="border: 2px solid black;">
-                    <h3>Profile</h3>
-                    <div>Name: </div>
-                    <div>Date of birth: </div>
-                    <div>Place of birth: </div>
-                    <div>Height: </div>
-                    <div>Wheight: </div>
-                    <div>Occupation: </div>
-                    <div>Interests: </div>
-                    <div>About me: </div>
+                    <hr>
+                    <div class="d-flex justify-content-center"><h4>{{ profile.name }}</h4></div>
+                    <hr>
+                    <div><span class="fw-bold">Date of birth:</span> {{ profile.birth_date }}</div>
+                    <div><span class="fw-bold">Place of birth:</span> {{ profile.birth_place }}</div>
+                    <div><span class="fw-bold">Height:</span> {{ profile.height }} m</div>
+                    <div><span class="fw-bold">Weight:</span> {{ profile.weight }} kgs</div>
+                    <div><span class="fw-bold">Occupation:</span> {{ profile.occupation }}</div>
+                    <div><span class="fw-bold">Interests:</span> {{ profile.interests }}</div>
+                    <div><span class="fw-bold">About me:</span> {{ profile.about_me }}</div>
                 </div>
             </div>
         </div>
