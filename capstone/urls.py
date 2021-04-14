@@ -10,4 +10,5 @@ urlpatterns = [
     path("should-i-eat", views.shouldIEat, name="shouldIEat"),
     path("results", views.results, name="results"),
     path("save-results", views.saveResults, name = "saveResults"),
+    path("log", views.log, name="log"),
 ]

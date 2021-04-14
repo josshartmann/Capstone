@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.urls import reverse
 import requests
 
-from .models import User
+from .models import User, ShouldIEat
 
 
 def index(request):
@@ -112,7 +112,32 @@ def results(request):
 def saveResults(request):
     if request.method == "POST":
         food = request.POST["food"]
-        print(food)
+        calories = request.POST["calories"]
+        weight = request.POST["weight"]
+        user = request.user
+
+        ins = ShouldIEat(user=user, food=food, calories=calories, weight=weight)
+        ins.save()
         
+        return HttpResponseRedirect(reverse("log"))
+
+
+def log(request):
+    if request.method == "POST":
+        user = request.user
+        cheats = ShouldIEat.objects.filter(user=user)
+
+        cheat = request.POST["row_delete"]
         
-        return HttpResponse('Ok')
+        ShouldIEat.objects.get(id=cheat).delete()
+
+        return render(request,"capstone/log.html", {
+            "cheats":cheats
+            })
+    else:
+        user = request.user
+        cheats = ShouldIEat.objects.filter(user=user)
+        
+        return render(request,"capstone/log.html", {
+            "cheats":cheats
+        })

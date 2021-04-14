@@ -11,3 +11,4 @@ class ShouldIEat(models.Model):
     food = models.CharField(max_length=255)
     calories = models.IntegerField()
     weight = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True)

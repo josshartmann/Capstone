@@ -1,0 +1,43 @@
+{% extends 'capstone/layout.html' %}
+{% load static %}
+{% block body %}
+{% block script %}
+    <script src="{% static 'capstone/capstone.js' %}"></script>
+{% endblock %}
+<section style="height: 80%;">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <hr>
+            <h2 style="text-align: center;">Times you cheated</h2>
+            <hr>
+                <table class="table table-responsive">
+                    <thead>
+                    <tr>
+                        <th>Food</th>
+                        <th style="text-align:center;">Calories</th>
+                        <th style="text-align:center;">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cheat in cheats %}
+                    <tr>
+                        <td>{{ cheat.food }}</td>
+                        <td style="text-align:center;">{{ cheat.calories }}</td>
+                        <td>{{ cheat.timestamp }}</td>
+                        <td class="btn btn-success" style="padding:0; margin:0;">
+                            <form action="{% url 'log' %}" method="post" style="padding:0; margin:0;">
+                                {% csrf_token %}
+                                <input type=hidden value="{{ cheat.id }}" name="row_delete">
+                                <button type="submit" class="btn btn-success" name=button><i class="fas fa-check"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
