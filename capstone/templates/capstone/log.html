@@ -22,7 +22,7 @@
                     <tbody>
                     {% for cheat in cheats %}
                     <tr>
-                        <td>{{ cheat.food }}</td>
+                        <td onmouseover="popResults()">{{ cheat.food }}</td>
                         <td style="text-align:center;">{{ cheat.calories }}</td>
                         <td>{{ cheat.timestamp }}</td>
                         <td class="btn btn-success" style="padding:0; margin:0;">

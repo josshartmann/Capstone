@@ -33,3 +33,7 @@ function showRegister(){
         login.style.display = "none";
     }
 }
+
+function popResults() {
+    alert('results');
+}
