@@ -95,7 +95,7 @@ def results(request):
         calories = request.POST["calories"]
         weight = request.POST["weight"]
 
-        met = [13.5, 10, 8, 7, 4.8, 4,2]
+        met = [13.5, 10, 8, 7, 4.8, 4, 2]
 
         resultHours = []
         resultMinutes = []

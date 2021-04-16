@@ -22,9 +22,10 @@
                     <tbody>
                     {% for cheat in cheats %}
                     <tr>
-                        <td onmouseover="popResults()">{{ cheat.food }}</td>
-                        <td style="text-align:center;">{{ cheat.calories }}</td>
+                        <td onmouseover="popResults({{ cheat.id }})" onmouseout="popResults({{ cheat.id }})">{{ cheat.food }} *</td>
+                        <td style="text-align:center;" id="caloriesLog-{{ cheat.id }}">{{ cheat.calories }}</td>
                         <td>{{ cheat.timestamp }}</td>
+                        <td hidden id="weightLog-{{ cheat.id }}">{{ cheat.weight }}</td>
                         <td class="btn btn-success" style="padding:0; margin:0;">
                             <form action="{% url 'log' %}" method="post" style="padding:0; margin:0;">
                                 {% csrf_token %}
@@ -34,6 +35,52 @@
                         </td>
                     </tr>
                     {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mt-5" style="display: none;" id="logResults">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <table class="table table-responsive" >
+                    <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th style="text-align:center;">Result(h)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Running(8 mph)</td>
+                        <td style="text-align:center;" id="runningLog">test</td>
+                    </tr>
+                    <tr>
+                        <td>Bicycling(16 mph)</td>
+                        <td style="text-align:center;" id="bicycling16Log">test</td>
+                    </tr>
+                    <tr>
+                        <td>Swimming(crawl, slow)</td>
+                        <td style="text-align:center;" id="swimmingLog">test</td>
+                    </tr>
+                    <tr>
+                        <td>Aerobic Calisthenics</td>
+                        <td style="text-align:center;" id="calisthenicsLog">test</td>
+                    </tr>
+                    <tr>
+                        <td>Dancing</td>
+                        <td style="text-align:center;" id="dancingLog">test</td>
+                    </tr>
+                    <tr>
+                        <td>Bicycling(less than 10 mph)</td>
+                        <td style="text-align:center;" id="bicycling10Log">test</td>
+                    </tr>
+                    <tr>
+                        <td>Walking briskly</td>
+                        <td style="text-align:center;" id="walkingLog">test</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
