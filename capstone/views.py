@@ -153,3 +153,7 @@ def log(request):
         return render(request,"capstone/log.html", {
             "cheats":cheats
         })
+
+
+def workoutGenerator(request):
+    return render(request, 'capstone/workout-generator.html')
