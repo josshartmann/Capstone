@@ -9,18 +9,21 @@
             <div class="row h-100 justify-content-center">
                 <div class="col-4 my-auto">
                     <h3>Workout Generator</h3>
-                    <form action="#" class="form-check">
-                        <input class="form-check-input" type="checkbox" id="chest" name="chest" value="chest">
+                    <form action="{% url 'workoutGenerator' %}" class="form-check" method="POST">
+                        {% csrf_token %}
+                        <input class="form-check-input" type="checkbox" id="chest" name="workout" value="chest">
                         <label for="chest">Chest</label><br>
-                        <input class="form-check-input" type="checkbox" id="back" name="back" value="back">
+                        <input class="form-check-input" type="checkbox" id="back" name="workout" value="back">
                         <label for="back">Back</label><br>
-                        <input class="form-check-input" type="checkbox" id="arms" name="arms" value="arms">
-                        <label for="arms">Arms</label><br>
-                        <input class="form-check-input" type="checkbox" id="abdominals" name="abdominals" value="abdominals">
+                        <input class="form-check-input" type="checkbox" id="biceps" name="workout" value="biceps">
+                        <label for="arms">Biceps</label><br>
+                        <input class="form-check-input" type="checkbox" id="triceps" name="workout" value="triceps">
+                        <label for="arms">Triceps</label><br>
+                        <input class="form-check-input" type="checkbox" id="abdominals" name="workout" value="abdominals">
                         <label for="abdominals">Abdominals</label><br>
-                        <input class="form-check-input" type="checkbox" id="legs" name="legs" value="legs">
+                        <input class="form-check-input" type="checkbox" id="legs" name="workout" value="legs">
                         <label for="legs">Legs</label><br>
-                        <input class="form-check-input" type="checkbox" id="shoulders" name="shoulders" value="shoulders">
+                        <input class="form-check-input" type="checkbox" id="shoulders" name="workout" value="shoulders">
                         <label for="shoulders">Shoulders</label><br>
                         <button type="submit" class="btn btn-light col-12 mt-2 border-dark">Submit</button>
                       </form>

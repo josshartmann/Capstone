@@ -156,4 +156,22 @@ def log(request):
 
 
 def workoutGenerator(request):
-    return render(request, 'capstone/workout-generator.html')
+    if request.method == "POST":
+
+        workout = request.POST.getlist('workout')
+        print(workout)
+
+        chest = ["Flat Barbell or Dumbbell Bench Press", "Dips (on parallel bars with slight forward lean)", "Push-Ups", "Incline Dumbbell Flyes"]
+        back = ["Pull-Ups", "Lat Pull-Downs", "Bent Over Barbell or Dumbbell Rows", "T-Bar Rows", "Barbell, Dumbbell or Machine Shrugs"]
+        shoulders = ["Standing Overhead Barbell or Dumbbell Press", "Arnold Press", "Dumbbell, Cable or Machine Lateral Raises", "Barbell, Dumbbell, or Machine Rear Delt Rows, Raises or Flyes"]
+        legs = ["Barbell or Dumbbell Squats", "Barbell or Dumbbell Lunges", "Leg Press", "Machine Squat/Hack Squat"]
+        biceps = ["Standing Barbell or Dumbbell Curls", "Barbell or Dumbbell Preacher Curls", "Hammer Curls"]
+        triceps = ["Flat Close Grip Bench Press", "Close Grip Push-Ups", "Skull Crushers", "Overhead Barbell or Dumbbell Triceps Extensions", "Bench Dips"]
+        abdominal = ["Plank", "Hand slide crunch", "Mountain climber", "Reverse crunch", "Dead bug", "Bird-dog", "Flutter kicks"]
+        
+
+        
+
+        return render(request, 'capstone/workout-generator.html')
+    else:
+        return render(request, 'capstone/workout-generator.html')
