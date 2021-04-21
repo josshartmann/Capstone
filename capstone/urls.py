@@ -12,4 +12,5 @@ urlpatterns = [
     path("save-results", views.saveResults, name="saveResults"),
     path("log", views.log, name="log"),
     path("workout-generator", views.workoutGenerator, name="workoutGenerator"),
+    # path("workout", views.workout, name="workout"),
 ]

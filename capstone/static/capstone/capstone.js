@@ -75,6 +75,8 @@ function popResults(id) {
     } else {
         element.style.display = 'none';
     }
+}
 
-    
+function printFunc() {
+    window.print();
 }

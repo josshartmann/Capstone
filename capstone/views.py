@@ -205,12 +205,11 @@ def workoutGenerator(request):
             for i in range(n):
                 workout_list.append(abdominal[i])
 
-
-        print(len(workout_list))
-
-
+        
 
         n = 0
-        return render(request, 'capstone/workout-generator.html')
+        return render(request, 'capstone/workout.html', {
+            "workout_list": workout_list,
+        })
     else:
         return render(request, 'capstone/workout-generator.html')

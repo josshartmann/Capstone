@@ -1,0 +1,38 @@
+{% extends 'capstone/layout.html' %}
+{% load static %}
+{% block body %}
+{% block script %}
+    <script src="{% static 'capstone/capstone.js' %}"></script>
+{% endblock %}
+<section id="section-to-print" class="mt-4">
+    <div class="container">
+        <div class="row h-100 justify-content-center">
+            <div class="col-6 my-auto">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Exercise</th>
+                            <th>Repetitions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for exercise in workout_list %}
+                        <tr>
+                            <td>
+                                {{ exercise }}
+                            </td>
+                            <td>
+                                1x8
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="col text-center">
+                    <button class="btn btn-light col-2 mt-2 border-dark" onclick="printFunc()">Print</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
