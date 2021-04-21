@@ -159,19 +159,58 @@ def workoutGenerator(request):
     if request.method == "POST":
 
         workout = request.POST.getlist('workout')
-        print(workout)
 
-        chest = ["Flat Barbell or Dumbbell Bench Press", "Dips (on parallel bars with slight forward lean)", "Push-Ups", "Incline Dumbbell Flyes"]
+        chest = ["Flat Barbell or Dumbbell Bench Press", "Dips (on parallel bars with slight forward lean)", "Push-Ups", "Incline Dumbbell Flyes", "Staggered press-up"]
         back = ["Pull-Ups", "Lat Pull-Downs", "Bent Over Barbell or Dumbbell Rows", "T-Bar Rows", "Barbell, Dumbbell or Machine Shrugs"]
-        shoulders = ["Standing Overhead Barbell or Dumbbell Press", "Arnold Press", "Dumbbell, Cable or Machine Lateral Raises", "Barbell, Dumbbell, or Machine Rear Delt Rows, Raises or Flyes"]
-        legs = ["Barbell or Dumbbell Squats", "Barbell or Dumbbell Lunges", "Leg Press", "Machine Squat/Hack Squat"]
-        biceps = ["Standing Barbell or Dumbbell Curls", "Barbell or Dumbbell Preacher Curls", "Hammer Curls"]
+        shoulders = ["Barbell Overhead Shoulder Press", "Seated Dumbbell Shoulder Press", "Front Raise", "Reverse Pec Deck Fly", "Bent-Over Dumbbell Lateral Raise"]
+        legs = ["Barbell or Dumbbell Squats", "Barbell or Dumbbell Lunges", "Leg Press", "Machine Squat/Hack Squat", "Step-ups"]
+        biceps = ["Standing Barbell or Dumbbell Curls", "Barbell or Dumbbell Preacher Curls", "Hammer Curls", "Concentration Curl", "Reverse-Grip Bent-Over Row"]
         triceps = ["Flat Close Grip Bench Press", "Close Grip Push-Ups", "Skull Crushers", "Overhead Barbell or Dumbbell Triceps Extensions", "Bench Dips"]
         abdominal = ["Plank", "Hand slide crunch", "Mountain climber", "Reverse crunch", "Dead bug", "Bird-dog", "Flutter kicks"]
         
+        n = 0
+        workout_list = []
 
-        
+        if len(workout) == 1:
+            n = 5
+        elif len(workout) == 2:
+            n = 4
+        elif len(workout) == 3:
+            n = 3
+        elif len(workout) == 4:
+            n = 2
+        else:
+            n = 1
 
+
+        if 'chest' in workout:
+            for i in range(n):
+                workout_list.append(chest[i])
+        if 'back' in workout:
+            for i in range(n):
+                workout_list.append(back[i])
+        if 'shoulders' in workout:
+            for i in range(n):
+                workout_list.append(shoulders[i])
+        if 'legs' in workout:
+            for i in range(n):
+                workout_list.append(legs[i])
+        if 'biceps' in workout:
+            for i in range(n):
+                workout_list.append(biceps[i])
+        if 'triceps' in workout:
+            for i in range(n):
+                workout_list.append(triceps[i])
+        if 'abdominals' in workout:
+            for i in range(n):
+                workout_list.append(abdominal[i])
+
+
+        print(len(workout_list))
+
+
+
+        n = 0
         return render(request, 'capstone/workout-generator.html')
     else:
         return render(request, 'capstone/workout-generator.html')
