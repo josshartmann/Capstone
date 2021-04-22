@@ -21,9 +21,23 @@
                             <td>
                                 {{ exercise }}
                             </td>
+                            {% if workout_list|length == 5 or workout_list|length == 6 %}
+                            <td>
+                                4x8
+                            </td>
+                            {% elif workout_list|length == 8 or workout_list|length == 7 %}
+                            <td>
+                                3x8
+                            </td>
+                            {% elif workout_list|length == 9 %}
+                            <td>
+                                2x8
+                            </td>
+                            {% elif workout_list|length > 4 %}
                             <td>
                                 1x8
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
