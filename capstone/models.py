@@ -25,3 +25,8 @@ class Profile(models.Model):
     interests = models.CharField(max_length=255)
     about_me = models.CharField(max_length=255)
     profile_photo = models.URLField(max_length=200, default='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png')
+
+
+class Quotes(models.Model):
+    quote = models.CharField(max_length=255)
+    author = models.CharField(max_length=100)
