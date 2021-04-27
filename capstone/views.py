@@ -5,8 +5,9 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 import requests
+import random
 
-from .models import User, ShouldIEat, Profile
+from .models import User, ShouldIEat, Profile, Quotes
 
 
 def index(request):
@@ -15,8 +16,12 @@ def index(request):
         
         profile = Profile.objects.get(user=user)
 
+        quotes = Quotes.objects.all()
+        random_quote = random.choice(quotes)
+
         return render(request, "capstone/home.html", {
             "profile": profile,
+            "random_quote": random_quote,
         })
     else:
         return render(request, "capstone/index.html")
