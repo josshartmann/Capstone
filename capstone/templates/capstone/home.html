@@ -2,24 +2,72 @@
 {% load static %}
 {% block body %}
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-4">
-                    <img src="{{ profile.profile_photo }}" style="max-height:400px; max-width: 400px; border: 2px solid black;">
+        <div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Admin
+                                    </h5>
+                                    <h6>
+                                        Student
+                                    </h6>
+                            <ul class="nav nav-tabs mt-5">
+                                <li class="nav-item fw-bold" style="padding-left: 10px">
+                                    About
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="profile-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Kshiti Ghelani</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>kshitighelani@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>123 456 7890</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Web Developer and Designer</p>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    </div>
                 </div>
-                <div class="col-8" style="border: 2px solid black;">
-                    <hr>
-                    <div class="d-flex justify-content-center"><h4>{{ profile.name }}</h4></div>
-                    <hr>
-                    <div><span class="fw-bold">Date of birth:</span><span> {{ profile.birth_date }}</span></div>
-                    <div><span class="fw-bold">Place of birth:</span><span> {{ profile.birth_place }}</span></div>
-                    <div><span class="fw-bold">Height:</span><span> {{ profile.height }}</span> m</div>
-                    <div><span class="fw-bold">Weight:</span><span> {{ profile.weight }} kgs</span></div>
-                    <div><span class="fw-bold">Occupation:</span><span> {{ profile.occupation }}</span></div>
-                    <div><span class="fw-bold">Interests:</span><span> {{ profile.interests }}</span></div>
-                    <div><span class="fw-bold">About me:</span><span> {{ profile.about_me }}</span></div>
-                </div>
-            </div>
+            </form>           
         </div>
     </section>
     <section>

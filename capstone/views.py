@@ -7,20 +7,18 @@ from django.urls import reverse
 import requests
 import random
 
-from .models import User, ShouldIEat, Profile, Quotes
+from .models import User, ShouldIEat, Quotes
 
 
 def index(request):
     if request.user.is_authenticated:
         user = request.user
         
-        profile = Profile.objects.get(user=user)
 
         quotes = Quotes.objects.all()
         random_quote = random.choice(quotes)
 
         return render(request, "capstone/home.html", {
-            "profile": profile,
             "random_quote": random_quote,
         })
     else:
