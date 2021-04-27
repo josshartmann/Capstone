@@ -22,17 +22,6 @@ def index(request):
         return render(request, "capstone/index.html")
 
 
-@login_required(login_url='login')
-def home(request):
-    user = request.user
-        
-    profile = Profile.objects.get(user=user)
-
-    return render(request, "capstone/home.html", {
-        "profile": profile,
-    })
-
-
 def register(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -51,12 +40,12 @@ def register(request):
             user = User.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
-            return render(request, "capstone/home.html", {
+            return render(request, "capstone/index.html", {
                 "message": "Username already taken."
             })
 
         login(request, user)
-        return HttpResponseRedirect(reverse('home'))
+        return HttpResponseRedirect(reverse('index'))
     else:
         return render(request, "capstone/index.html")
 
@@ -71,7 +60,7 @@ def login_view(request):
         # check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("home"))
+            return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "capstone/index.html", {
                 "message": "Invalid username and/or password."
@@ -205,9 +194,8 @@ def workoutGenerator(request):
             for i in range(n):
                 workout_list.append(abdominal[i])
 
-        
-
         n = 0
+
         return render(request, 'capstone/workout.html', {
             "workout_list": workout_list,
         })

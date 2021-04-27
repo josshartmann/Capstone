@@ -26,7 +26,7 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-light bg-light" >
                 <div class="container" style="border-bottom: 1px solid black">
-                    <a href="/" class="navbar-brand" onclick="showIndex()">
+                    <a href="{% url 'index' %}" class="navbar-brand" onclick="showIndex()">
                         <img src="{% static 'capstone/images/airquote-l.png' %}" width="45">
                         <span>Coach</span>
                         <img src="{% static 'capstone/images/airquote-r.png' %}" width="45">
@@ -37,7 +37,7 @@
                     <div class="collapse navbar-collapse d-flex align-items-end flex-column" id="nav-principal">
                         <ul class="navbar-nav">
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                            <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
                             <li class="nav-item"><a href="{% url 'shouldIEat' %}" class="nav-link">Should I Eat?</a></li>
                             <li class="nav-item"><a href="{% url 'log' %}" class="nav-link">Log</a></li>
                             <li class="nav-item"><a href="{% url 'workoutGenerator' %}" class="nav-link">Workout Generator</a></li>
