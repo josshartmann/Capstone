@@ -7,7 +7,7 @@ from django.urls import reverse
 import requests
 import random
 
-from .models import User, ShouldIEat, Quotes
+from .models import User, ShouldIEat, Quotes, Profile
 
 
 def index(request):
@@ -29,6 +29,11 @@ def register(request):
     if request.method == "POST":
         username = request.POST["username"]
         email = request.POST["email"]
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        profession = request.POST["profession"]
+        phone = request.POST["phone"]
+        birth_date = request.POST["birth-date"]
 
         # ensure password matches confirmation
         password = request.POST["password"]
@@ -42,6 +47,9 @@ def register(request):
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
+
+            ins = Profile(user=user, first_name=first_name, last_name=last_name, phone=phone, profession=profession, birth_date=birth_date)
+            ins.save()
         except IntegrityError:
             return render(request, "capstone/index.html", {
                 "message": "Username already taken."
