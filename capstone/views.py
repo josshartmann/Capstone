@@ -4,6 +4,8 @@ from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import requests
 import random
 
@@ -215,3 +217,20 @@ def workoutGenerator(request):
         })
     else:
         return render(request, 'capstone/workout-generator.html')
+
+
+
+def edit(request, username):
+    print('we got here!')
+    update = Profile.objects.get(user=username)
+
+    if request.method == "GET":
+        return JsonResponse(update.serialize())
+
+    if request.method == "PUT":
+        data = json.loads(request.body)
+        if data.get("phone") is not None:
+            update.phone = data["phone"]
+        update.save()
+
+        return HttpResponse(status=204)

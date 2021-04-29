@@ -1,73 +1,78 @@
 {% extends "capstone/layout.html" %}
 {% load static %}
 {% block body %}
+{% block script %}
+    <script src="{% static 'capstone/capstone.js' %}"></script>
+{% endblock %}
     <section>
         <div class="container emp-profile">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                            <input type="file" name="file"/>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                        {{ profile.user }}
-                                    </h5>
-                                    <h6>
-                                        {{ profile.profession }}
-                                    </h6>
-                            <ul class="nav nav-tabs mt-5">
-                                <li class="nav-item fw-bold" style="padding-left: 10px">
-                                    About
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="profile-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Name</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ profile.first_name }} {{ profile.last_name }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Email</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ user.email }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Phone</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ profile.phone }}</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Profession</label>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>{{ profile.profession }}</p>
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                     </div>
                 </div>
-            </form>           
+                <div class="col-md-6">
+                    <div class="profile-head">
+                                <h5>
+                                    {{ profile.user }}
+                                </h5>
+                                <h6>
+                                    {{ profile.profession }}
+                                </h6>
+                        <ul class="nav nav-tabs mt-5">
+                            <li class="nav-item fw-bold" style="padding-left: 10px">
+                                About
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>{{ profile.first_name }} {{ profile.last_name }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="display: block;" id="profileEmail">{{ user.email }}</p>
+                                <textarea class="mb-3" rows="1" id="editEmail" style="display: none;">{{ user.email }}</textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="display: block;" id="profilePhone">{{ profile.phone }}</p>
+                                <textarea class="mb-3" rows="1" id="editPhone" style="display: none;">{{ profile.phone }}</textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="display: block;" id="profileProfession">{{ profile.profession }}</p>
+                                <textarea rows="1" id="editProfession" style="display: none;">{{ profile.profession }}</textarea>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <input type="submit" style="display: block;" onclick="editFunc('{{ profile.user }}')" class="profile-edit-btn" name="btnAddMore" id="btnEdit" value="Edit Profile"/>
+                    <input type="submit" style="display: none;" class="profile-edit-btn" name="btnAddMore" id="btnSave" value="Save"/>
+                </div>
+            </div>         
         </div>
     </section>
     <section>

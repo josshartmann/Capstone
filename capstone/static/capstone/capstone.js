@@ -80,3 +80,70 @@ function popResults(id) {
 function printFunc() {
     window.print();
 }
+
+
+function editFunc(username) {
+    var edit = document.getElementById('btnEdit');
+    var save = document.getElementById('btnSave');
+    var email = document.getElementById('profileEmail');
+    var phone = document.getElementById('profilePhone');
+    var profession = document.getElementById('profileProfession');
+    var edit_email = document.getElementById('editEmail');
+    var edit_phone = document.getElementById('editPhone');
+    var edit_profession = document.getElementById('editProfession')
+
+    edit.style.display = 'none';
+    save.style.display = 'block';
+
+    email.style.display = 'none';
+    phone.style.display = 'none';
+    profession.style.display = 'none';
+    edit_email.style.display = 'block';
+    edit_phone.style.display = 'block';
+    edit_profession.style.display = 'block';
+
+
+    save.addEventListener('click', () => {
+        // alert('test')
+        // fetch('edit/' + username, {
+        //     method: 'PUT',
+        //     body: JSON.stringify({
+        //         phone: edit_phone.value,
+        //     });
+        // } );
+
+        edit.style.display = 'block';
+        save.style.display = 'none';
+
+        email.style.display = 'block';
+        phone.style.display = 'block';
+        profession.style.display = 'block';
+        edit_email.style.display = 'none';
+        edit_phone.style.display = 'none';
+        edit_profession.style.display = 'none';
+        
+    })
+
+
+}
+
+// function save() {
+//     var edit = document.getElementById('btnEdit');
+//     var save = document.getElementById('btnSave');
+//     var email = document.getElementById('profileEmail');
+//     var phone = document.getElementById('profilePhone');
+//     var profession = document.getElementById('profileProfession');
+//     var edit_email = document.getElementById('editEmail');
+//     var edit_phone = document.getElementById('editPhone');
+//     var edit_profession = document.getElementById('editProfession')
+
+//     edit.style.display = 'block';
+//     save.style.display = 'none';
+
+//     email.style.display = 'block';
+//     phone.style.display = 'block';
+//     profession.style.display = 'block';
+//     edit_email.style.display = 'none';
+//     edit_phone.style.display = 'none';
+//     edit_profession.style.display = 'none';
+// }
