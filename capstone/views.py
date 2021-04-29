@@ -18,8 +18,11 @@ def index(request):
         quotes = Quotes.objects.all()
         random_quote = random.choice(quotes)
 
+        profile = Profile.objects.get(user=user)
+
         return render(request, "capstone/home.html", {
             "random_quote": random_quote,
+            "profile": profile,
         })
     else:
         return render(request, "capstone/index.html")
