@@ -26,11 +26,11 @@
                         <td style="text-align:center;" id="caloriesLog-{{ cheat.id }}">{{ cheat.calories }}</td>
                         <td>{{ cheat.timestamp }}</td>
                         <td hidden id="weightLog-{{ cheat.id }}">{{ cheat.weight }}</td>
-                        <td class="btn btn-success" style="padding:0; margin:0;">
+                        <td class="btn btn-primary" style="padding:0; margin:0 0 0 4px;">
                             <form action="{% url 'log' %}" method="post" style="padding:0; margin:0;">
                                 {% csrf_token %}
                                 <input type=hidden value="{{ cheat.id }}" name="row_delete">
-                                <button type="submit" class="btn btn-success" name=button><i class="fas fa-check"></i></button>
+                                <button type="submit" class="btn btn-primary" name=button><i class="fas fa-check"></i></button>
                             </form>
                         </td>
                     </tr>
