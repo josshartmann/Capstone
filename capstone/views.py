@@ -220,9 +220,9 @@ def workoutGenerator(request):
 
 
 
-def edit(request, username):
+def edit(request, user_name):
     print('we got here!')
-    update = Profile.objects.get(user=username)
+    update = Profile.objects.get(user=user_name)
 
     if request.method == "GET":
         return JsonResponse(update.serialize())

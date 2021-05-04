@@ -82,7 +82,7 @@ function printFunc() {
 }
 
 
-function editFunc(username) {
+function editFunc(user_name) {
     var edit = document.getElementById('btnEdit');
     var save = document.getElementById('btnSave');
     var email = document.getElementById('profileEmail');
@@ -104,13 +104,12 @@ function editFunc(username) {
 
 
     save.addEventListener('click', () => {
-        // alert('test')
-        // fetch('edit/' + username, {
-        //     method: 'PUT',
-        //     body: JSON.stringify({
-        //         phone: edit_phone.value,
-        //     });
-        // } );
+        fetch('edit/' + user_name, {
+            method: 'PUT',
+            body: JSON.stringify({
+                phone: edit_phone.value,
+            });
+        } );
 
         edit.style.display = 'block';
         save.style.display = 'none';
