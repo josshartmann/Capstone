@@ -104,6 +104,7 @@ function editFunc(user_name) {
 
 
     save.addEventListener('click', () => {
+        alert(user_name)
         fetch('edit/' + user_name, {
             method: 'PUT',
             body: JSON.stringify({
@@ -123,7 +124,7 @@ function editFunc(user_name) {
         
     })
 
-
+    return false
 }
 
 // function save() {

@@ -1,3 +1,6 @@
+import requests
+import random
+import json
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
@@ -6,8 +9,6 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-import requests
-import random
 
 from .models import User, ShouldIEat, Quotes, Profile
 
@@ -221,16 +222,17 @@ def workoutGenerator(request):
 
 
 def edit(request, user_name):
-    print('we got here!')
-    update = Profile.objects.get(user=user_name)
+    print(user_name)
+    user = User.objects.get(username=user_name)
+    profile = Profile.objects.get(user=user)
 
     if request.method == "GET":
-        return JsonResponse(update.serialize())
+        return JsonResponse(profile.serialize())
 
     if request.method == "PUT":
         data = json.loads(request.body)
         if data.get("phone") is not None:
-            update.phone = data["phone"]
-        update.save()
+            profile.phone = data["phone"]
+        profile.save()
 
         return HttpResponse(status=204)
