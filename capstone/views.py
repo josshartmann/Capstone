@@ -227,7 +227,7 @@ def edit(request, user_name):
     profile = Profile.objects.get(user=user)
 
     if request.method == "GET":
-        return JsonResponse(profile.serialize())
+        return JsonResponse(update.serialize())
 
     if request.method == "PUT":
         data = json.loads(request.body)

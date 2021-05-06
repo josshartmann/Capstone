@@ -69,8 +69,8 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <input type="submit" style="display: block;" onclick="editFunc('{{ profile.user }}')" class="profile-edit-btn" name="btnAddMore" id="btnEdit" value="Edit Profile"/>
-                    <input type="submit" style="display: none;" class="profile-edit-btn" name="btnAddMore" id="btnSave" value="Save"/>
+                    <input type="submit" style="display: block;" onclick="editFunc()" class="profile-edit-btn" id="btnEdit" value="Edit Profile"/>
+                    <input type="submit" style="display: none;" onclick="save('{{ profile.user }}')" class="profile-edit-btn" id="btnSave" value="Save"/>
                 </div>
             </div>         
         </div>

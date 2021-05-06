@@ -82,7 +82,7 @@ function printFunc() {
 }
 
 
-function editFunc(user_name) {
+function editFunc() {
     var edit = document.getElementById('btnEdit');
     var save = document.getElementById('btnSave');
     var email = document.getElementById('profileEmail');
@@ -101,49 +101,35 @@ function editFunc(user_name) {
     edit_email.style.display = 'block';
     edit_phone.style.display = 'block';
     edit_profession.style.display = 'block';
-
-
-    save.addEventListener('click', () => {
-        alert(user_name)
-        fetch('edit/' + user_name, {
-            method: 'PUT',
-            body: JSON.stringify({
-                phone: edit_phone.value,
-            });
-        } );
-
-        edit.style.display = 'block';
-        save.style.display = 'none';
-
-        email.style.display = 'block';
-        phone.style.display = 'block';
-        profession.style.display = 'block';
-        edit_email.style.display = 'none';
-        edit_phone.style.display = 'none';
-        edit_profession.style.display = 'none';
-        
-    })
-
-    return false
 }
 
-// function save() {
-//     var edit = document.getElementById('btnEdit');
-//     var save = document.getElementById('btnSave');
-//     var email = document.getElementById('profileEmail');
-//     var phone = document.getElementById('profilePhone');
-//     var profession = document.getElementById('profileProfession');
-//     var edit_email = document.getElementById('editEmail');
-//     var edit_phone = document.getElementById('editPhone');
-//     var edit_profession = document.getElementById('editProfession')
+function save(user_name) {
+    var edit = document.getElementById('btnEdit');
+    var save = document.getElementById('btnSave');
+    var email = document.getElementById('profileEmail');
+    var phone = document.getElementById('profilePhone');
+    var profession = document.getElementById('profileProfession');
+    var edit_email = document.getElementById('editEmail');
+    var edit_phone = document.getElementById('editPhone');
+    var edit_profession = document.getElementById('editProfession')
 
-//     edit.style.display = 'block';
-//     save.style.display = 'none';
 
-//     email.style.display = 'block';
-//     phone.style.display = 'block';
-//     profession.style.display = 'block';
-//     edit_email.style.display = 'none';
-//     edit_phone.style.display = 'none';
-//     edit_profession.style.display = 'none';
-// }
+    // fetch('edit/' + user_name, {
+    //     method: 'PUT',
+    //     body: JSON.stringify({
+    //         test: "testing",
+    //     });
+    // });
+        
+
+    edit.style.display = 'block';
+    save.style.display = 'none';
+
+    email.style.display = 'block';
+    phone.style.display = 'block';
+    profession.style.display = 'block';
+    edit_email.style.display = 'none';
+    edit_phone.style.display = 'none';
+    edit_profession.style.display = 'none';
+        
+}
