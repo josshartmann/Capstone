@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
+
 from .models import User, ShouldIEat, Quotes, Profile
 
 
@@ -221,18 +222,23 @@ def workoutGenerator(request):
 
 
 
-def edit(request, user_name):
-    print(user_name)
-    user = User.objects.get(username=user_name)
-    profile = Profile.objects.get(user=user)
+def edit(request):
+    if request.method == "POST":
+        user = request.user
+        email = request.POST["editEmail"]
+        phone = request.POST["editPhone"]
+        profession = request.POST["editProfession"]
 
-    if request.method == "GET":
-        return JsonResponse(update.serialize())
+        profile = Profile.objects.get(user=user)
 
-    if request.method == "PUT":
-        data = json.loads(request.body)
-        if data.get("phone") is not None:
-            profile.phone = data["phone"]
+        profile.phone = phone
+        profile.profession = profession
         profile.save()
 
+        user = User.objects.get(username=user)
+        user.email = email
+        user.save()
+
+        return HttpResponse(status=204)
+    else:
         return HttpResponse(status=204)

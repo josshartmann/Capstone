@@ -6,73 +6,76 @@
 {% endblock %}
     <section>
         <div class="container emp-profile">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="profile-img">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                        <div class="file btn btn-lg btn-primary">
-                            Change Photo
-                            <input type="file" name="file"/>
+            <form method="post" action="{% url 'edit' %}">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <div class="file btn btn-lg btn-primary">
+                                Change Photo
+                                <input type="file" name="file"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="profile-head">
-                                <h5>
-                                    {{ profile.user }}
-                                </h5>
-                                <h6>
-                                    {{ profile.profession }}
-                                </h6>
-                        <ul class="nav nav-tabs mt-5">
-                            <li class="nav-item fw-bold" style="padding-left: 10px">
-                                About
-                            </li>
-                        </ul>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        {{ profile.user }}
+                                    </h5>
+                                    <h6 id="headProfession">
+                                        {{ profile.profession }}
+                                    </h6>
+                            <ul class="nav nav-tabs mt-5">
+                                <li class="nav-item fw-bold" style="padding-left: 10px">
+                                    About
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="profile-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{ profile.first_name }} {{ profile.last_name }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Email</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="display: block;" id="profileEmail">{{ user.email }}</p>
+                                    <textarea class="mb-3" rows="1" id="editEmail" name="editEmail" style="display: none;">{{ user.email }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Phone</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="display: block;" id="profilePhone">{{ profile.phone }}</p>
+                                    <textarea class="mb-3" rows="1" id="editPhone" name="editPhone" style="display: none;">{{ profile.phone }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Profession</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <p style="display: block;" id="profileProfession">{{ profile.profession }}</p>
+                                    <textarea rows="1" id="editProfession" name="editProfession" style="display: none;">{{ profile.profession }}</textarea>
+                                </div>
+                            </div> 
+                        </div>
                     </div>
-                    <div class="profile-tab">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Name</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>{{ profile.first_name }} {{ profile.last_name }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Email</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p style="display: block;" id="profileEmail">{{ user.email }}</p>
-                                <textarea class="mb-3" rows="1" id="editEmail" style="display: none;">{{ user.email }}</textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Phone</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p style="display: block;" id="profilePhone">{{ profile.phone }}</p>
-                                <textarea class="mb-3" rows="1" id="editPhone" style="display: none;">{{ profile.phone }}</textarea>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label>Profession</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p style="display: block;" id="profileProfession">{{ profile.profession }}</p>
-                                <textarea rows="1" id="editProfession" style="display: none;">{{ profile.profession }}</textarea>
-                            </div>
-                        </div> 
+                    <div class="col-md-2">
+                        <input type="button" style="display: block;" onclick="editFunc()" class="profile-edit-btn" id="btnEdit" value="Edit Profile"/>
+                        <input type="submit" style="display: none;" onclick="save()" class="profile-edit-btn" id="btnSave" value="Save"/>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <input type="submit" style="display: block;" onclick="editFunc()" class="profile-edit-btn" id="btnEdit" value="Edit Profile"/>
-                    <input type="submit" style="display: none;" onclick="save('{{ profile.user }}')" class="profile-edit-btn" id="btnSave" value="Save"/>
-                </div>
-            </div>         
+            </form>         
         </div>
     </section>
     <section>

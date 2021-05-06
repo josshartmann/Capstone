@@ -103,7 +103,7 @@ function editFunc() {
     edit_profession.style.display = 'block';
 }
 
-function save(user_name) {
+function save() {
     var edit = document.getElementById('btnEdit');
     var save = document.getElementById('btnSave');
     var email = document.getElementById('profileEmail');
@@ -111,16 +111,13 @@ function save(user_name) {
     var profession = document.getElementById('profileProfession');
     var edit_email = document.getElementById('editEmail');
     var edit_phone = document.getElementById('editPhone');
-    var edit_profession = document.getElementById('editProfession')
-
-
-    // fetch('edit/' + user_name, {
-    //     method: 'PUT',
-    //     body: JSON.stringify({
-    //         test: "testing",
-    //     });
-    // });
+    var edit_profession = document.getElementById('editProfession');
+    var head_profession = document.getElementById('headProfession');
         
+    email.innerHTML = edit_email.value;
+    phone.innerHTML = edit_phone.value;
+    profession.innerHTML = edit_profession.value;
+    head_profession.innerHTML = edit_profession.value;
 
     edit.style.display = 'block';
     save.style.display = 'none';
@@ -131,5 +128,4 @@ function save(user_name) {
     edit_email.style.display = 'none';
     edit_phone.style.display = 'none';
     edit_profession.style.display = 'none';
-        
 }

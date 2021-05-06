@@ -11,5 +11,5 @@ urlpatterns = [
     path("save-results", views.saveResults, name="saveResults"),
     path("log", views.log, name="log"),
     path("workout-generator", views.workoutGenerator, name="workoutGenerator"),
-    path("edit/<str:user_name>", views.edit, name="edit"),
+    path("edit", views.edit, name="edit"),
 ]
