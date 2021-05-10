@@ -129,3 +129,9 @@ function save() {
     edit_phone.style.display = 'none';
     edit_profession.style.display = 'none';
 }
+
+
+function launch() {
+    alert('alert!')
+}
+    

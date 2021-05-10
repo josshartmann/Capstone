@@ -16,6 +16,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=20, null=True, blank=True)
     profession = models.CharField(max_length=55, null=True, blank=True)
     birth_date = models.DateField(null=True, blank=True)
+    photo = models.URLField(max_length=300, default='https://icons-for-free.com/iconfiles/png/512/free+outline+people+profile+ui+icon-1320196081912311498.png')
 
 
 class ShouldIEat(models.Model):
