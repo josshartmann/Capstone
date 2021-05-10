@@ -12,4 +12,5 @@ urlpatterns = [
     path("log", views.log, name="log"),
     path("workout-generator", views.workoutGenerator, name="workoutGenerator"),
     path("edit", views.edit, name="edit"),
+    path("edit2", views.edit2, name="edit2"),
 ]

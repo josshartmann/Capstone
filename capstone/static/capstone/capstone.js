@@ -130,8 +130,10 @@ function save() {
     edit_profession.style.display = 'none';
 }
 
-
-function launch() {
-    alert('alert!')
+function openForm() {
+    document.getElementById("my-form").style.display = "block";
 }
-    
+  
+function closeForm() {
+    document.getElementById("my-form").style.display = "none";
+}

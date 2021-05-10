@@ -6,18 +6,25 @@
 {% endblock %}
     <section>
         <div class="container emp-profile">
-            <form method="post" action="{% url 'edit' %}">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="{{ profile.photo }}" style="max-height: 250px; max-width: 250px;" alt=""/>
-                            <div class="file btn btn-lg btn-primary" onclick="launch()">
-                                Change Photo
-                            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="{{ profile.photo }}" style="max-height: 250px; max-width: 250px;" alt=""/>
+                        <div class="file btn btn-lg btn-primary" onclick="openForm()">
+                            Change Photo
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div style="display: none;" id="my-form">
+                        <form method="post" action="{% url 'edit2' %}">
+                            {% csrf_token %}
+                            <input type="url" class="form-control" required id="photo-url" name="photo-url" placeholder="Photo URL" autocomplete="off" style="text-align: center;">
+                            <input type="submit" class="btn btn-light col-12 mt-2 border-dark" value="Submit" onclick="closeForm()">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <form method="post" action="{% url 'edit' %}">
+                        {% csrf_token %}
                         <div class="profile-head">
                                     <h5>
                                         {{ profile.user }}
@@ -25,6 +32,12 @@
                                     <h6 id="headProfession">
                                         {{ profile.profession }}
                                     </h6>
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <div class="col-md-3">
+                                            <input type="button" style="display: block;" onclick="editFunc()" class="profile-edit-btn" id="btnEdit" value="Edit Profile"/>
+                                            <input type="submit" style="display: none;" onclick="save()" class="profile-edit-btn" id="btnSave" value="Save"/>
+                                        </div>
+                                    </div>
                             <ul class="nav nav-tabs mt-5">
                                 <li class="nav-item fw-bold" style="padding-left: 10px">
                                     About
@@ -68,13 +81,10 @@
                                 </div>
                             </div> 
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="button" style="display: block;" onclick="editFunc()" class="profile-edit-btn" id="btnEdit" value="Edit Profile"/>
-                        <input type="submit" style="display: none;" onclick="save()" class="profile-edit-btn" id="btnSave" value="Save"/>
-                    </div>
+                    </form>
                 </div>
-            </form>         
+            </div>
+                     
         </div>
     </section>
     <section>

@@ -242,3 +242,15 @@ def edit(request):
         return HttpResponse(status=204)
     else:
         return HttpResponse(status=204)
+
+
+def edit2(request):
+    if request.method == "POST":
+        user = request.user
+        url = request.POST["photo-url"]
+        
+        profile = Profile.objects.get(user=user)
+        profile.photo = url
+        profile.save()
+
+        return HttpResponseRedirect(reverse("index"))
