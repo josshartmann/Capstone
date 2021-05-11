@@ -9,24 +9,23 @@
     {% endif %}
     <div class="container" style="height: 84vh;">
         <div class="row h-100">
-            <div class="col-8 my-auto">
+            <div class="col-6 col-sm-6 col-md-8 my-auto">
                 <div>
                     <hr>
                     <h3 class="d-flex justify-content-center">Coach in Air Quotes</h3>
                     <hr>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae ex blanditiis enim maiores illum, vitae quidem dolor iusto debitis doloribus saepe fugiat! Officia deleniti consequuntur aspernatur cumque atque ipsam amet.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Recusandae ex blanditiis enim maiores illum, vitae quidem dolor iusto debitis doloribus saepe fugiat! Officia deleniti consequuntur aspernatur cumque atque ipsam amet.</p>
+                    <p>"Coach" is a website that will help you to get healthier, fitter and happier. We will present you some tools that will assist you in some chores and clarify doubts you may have about food, exercises and more!</p>
+                    <p class="d-flex justify-content-center">Register and check it out!</p>
                     <div class="d-flex justify-content-center">
-                        <img cla src="{% static 'capstone/images/couple.png' %}" width="300px";object-fit: cover;">
+                        <img cla src="{% static 'capstone/images/couple.png' %}" width="300px";object-fit: cover;>
                     </div>
                 </div>
             </div>
-            <div class="col-4 my-auto" id="login" style="display: none;">
+            <div class="col-6 col-sm-6 col-md-4 my-auto" id="login" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <h4>Login</h4>
-                            
                             <form action="{% url 'login' %}" class="form-container" method="post">
                                 {% csrf_token %}
                                 <div class="form-group">
@@ -41,7 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 my-auto" id="register" style="display: none;">
+            <div class="col-6 col-sm-6 col-md-4 my-auto" id="register" style="display: none;">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -81,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4 my-auto" id="index" style="display: block;">
+            <div class="col-6 col-sm-6 col-md-4 my-auto" id="index" style="display: block;">
                 <div>
                     <img src="{% static 'capstone/images/workhard.png' %}" width="100%">
                 </div>
