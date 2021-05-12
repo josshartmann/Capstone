@@ -33,7 +33,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-principal">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="nav-principal">
+                <div class="collapse navbar-collapse justify-content-end" id="nav-principal">
                     <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
