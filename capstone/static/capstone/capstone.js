@@ -137,3 +137,7 @@ function openForm() {
 function closeForm() {
     document.getElementById("my-form").style.display = "none";
 }
+
+function openWindow(exercise) {
+    window.open(`https://www.google.com/search?q=${exercise}&tbm=isch`)
+}

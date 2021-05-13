@@ -18,7 +18,7 @@
                     <tbody>
                         {% for exercise in workout_list %}
                         <tr>
-                            <td>
+                            <td onclick="openWindow('{{ exercise }}')">
                                 {{ exercise }}
                             </td>
                             {% if workout_list|length == 5 or workout_list|length == 6 %}
