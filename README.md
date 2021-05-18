@@ -27,7 +27,7 @@ Beyond these requirements, the design, look, and feel of the website are up to y
 
 My final project is Coach in Air Quotes. Users are able to register, edit their profile, calculate how much exercise they need to do to compensate a cheat meal, save that on a log so they can "pay" the exercise later and then remove from the "log" tab. They can also use the website do generate a gym workout by choosing the muscular groups they want.
 
-The project was built using Django as a backend framework and JavaScript/Python as a frontend programming language. All generated information are saved in database(SQLite by default).
+The project was built using Django as a backend framework and JavaScript as a frontend programming language. All generated information are saved in database(SQLite by default).
 
 All webpages of the project are mobile-responsive.
 
