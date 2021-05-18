@@ -57,4 +57,4 @@ All webpages of the project are mobile-responsive.
     - `views.py` respectively, contains all application views.
   - `web_project` - project directory.
 
-The project's video: 
+The project's video: https://www.youtube.com/watch?v=MAuJFAd8WZw
