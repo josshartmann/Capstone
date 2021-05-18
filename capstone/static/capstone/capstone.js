@@ -37,7 +37,11 @@ function showRegister(){
 function time_convert(num) { 
     var hours = Math.floor(num / 60);  
     var minutes = num % 60;
-    return hours + ":" + Math.round(minutes);         
+    if (minutes < 10) {
+        return hours + ":0" + Math.round(minutes);
+    } else {
+        return hours + ":" + Math.round(minutes);
+    }       
 }
 
 function popResults(id) {
@@ -131,11 +135,12 @@ function save() {
 }
 
 function openForm() {
-    document.getElementById("my-form").style.display = "block";
-}
-  
-function closeForm() {
-    document.getElementById("my-form").style.display = "none";
+    form = document.getElementById("my-form");
+    if (form.style.display == "block") {
+        document.getElementById("my-form").style.display = "none";
+    } else {
+        document.getElementById("my-form").style.display = "block";
+    }
 }
 
 function openWindow(exercise) {
