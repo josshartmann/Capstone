@@ -7,7 +7,7 @@
 <section id="section-to-print" class="mt-4">
     <div class="container">
         <div class="row h-100 justify-content-center">
-            <div class="col-sm-12 col-md-8 col-lg-6 my-auto">
+            <div class="col-auto my-auto">
                 <table class="table table-responsive">
                     <thead>
                         <tr>
@@ -22,19 +22,19 @@
                                 {{ exercise }}
                             </td>
                             {% if workout_list|length == 5 or workout_list|length == 6 %}
-                            <td>
+                            <td class="text-center">
                                 4x8
                             </td>
                             {% elif workout_list|length == 8 or workout_list|length == 7 %}
-                            <td>
+                            <td class="text-center">
                                 3x8
                             </td>
                             {% elif workout_list|length == 9 %}
-                            <td>
+                            <td class="text-center">
                                 2x8
                             </td>
                             {% elif workout_list|length > 4 %}
-                            <td>
+                            <td class="text-center">
                                 1x8
                             </td>
                             {% endif %}
@@ -42,8 +42,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
-                <div class="col text-center">
-                    <button class="btn btn-light col-2 mt-2 border-dark" onclick="printFunc()">Print</button>
+                <div class="col-12 text-center">
+                    <button class="btn btn-light mt-2 border-dark" onclick="printFunc()">Print</button>
                 </div>
             </div>
         </div>

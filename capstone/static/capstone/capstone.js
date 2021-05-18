@@ -141,3 +141,17 @@ function closeForm() {
 function openWindow(exercise) {
     window.open(`https://www.google.com/search?q=${exercise}&tbm=isch`)
 }
+
+window.onload=function(){
+    var checkboxes = document.getElementsByClassName('checkme');
+    var sendbtn = document.getElementById('createWorkout');
+    var length = checkboxes.length;
+
+    for (var i=0;i<length;i++) {
+            var box = checkboxes[i];
+            var isChecked = box.checked;
+            box.onchange = function() {
+                sendbtn.disabled = isChecked?true:false;
+            }
+        }
+    }
